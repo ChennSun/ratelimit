@@ -6,7 +6,7 @@ import (
 )
 
 func TestLimitWindow_Slide(t *testing.T) {
-	rateLimit := Init(1, SetTimes(1000), SetInterval(time.Second*10))
+	rateLimit := Init(SetTimes(1000), SetInterval(time.Second*10))
 	t.Run("test1", func(t *testing.T) {
 		if got := rateLimit.Slide(); got != true {
 			t.Errorf("Slide() = %v, want %v", got, true)

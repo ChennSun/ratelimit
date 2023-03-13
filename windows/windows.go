@@ -13,7 +13,6 @@ import (
 
 type LimitWindow struct {
 	lock     sync.Mutex
-	body     int64
 	interval time.Duration
 	times    uint
 	windows  []int64
@@ -35,9 +34,8 @@ func SetTimes(times uint) Option {
 	}
 }
 
-func Init(body int64, option ...Option) *LimitWindow {
+func Init(option ...Option) *LimitWindow {
 	l := &LimitWindow{
-		body:     body,
 		interval: 60 * time.Second,
 		times:    10,
 	}
